@@ -30,9 +30,9 @@ const character = async (_, { input: { id } }) => {
   }
 };
 
-const createCharacter = async () => {
+const createCharacter = async (_, { input: { username } }) => {
   const document = await client.query(
-    q.Create(q.Collection('characters'), { data: {} })
+    q.Create(q.Collection('characters'), { data: { username } })
   );
 
   return {
@@ -43,6 +43,7 @@ const createCharacter = async () => {
 
 const updateCharacter = async (_, { input: characterInput }) => {
   const { id, ...character } = characterInput;
+
   const document = await client.query(
     q.Update(q.Ref(q.Collection('characters'), id), {
       data: character,

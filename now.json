@@ -1,5 +1,6 @@
 {
   "env": {
     "FAUNA_KEY": "@tech-community-of-rea-fauna-key"
-  }
+  },
+  "routes": [{ "src": "/graphql", "dest": "/api/graphql" }]
 }
