@@ -1,13 +1,20 @@
 import React from 'react';
+import ApolloProvider from './context/Apollo';
+import Router from './components/Router';
 
 const App = () => {
-  return <div>App!</div>;
+  return (
+    <ApolloProvider>
+      <Router />
+    </ApolloProvider>
+  );
 };
 
 export default App;
 
+// TODO: Router
+// TODO: prettier
 // TODO: Install styled components
-// TODO: Install Apollo Client
 // TODO: Install react hook form
 // TODO: Fill in README
 
