@@ -1,6 +1,14 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 const CHARACTERS = gql`
   query {
@@ -23,10 +31,13 @@ const renderCharacter = ({ id, username }) => (
 const CharacterList = () => {
   const { loading, error, data } = useQuery(CHARACTERS);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
-
-  return data.characters.map(renderCharacter);
+  return (
+    <Container>
+      {loading && <p>Loading...</p>}
+      {error && <p>Error :(</p>}
+      {data && data.characters.map(renderCharacter)}
+    </Container>
+  );
 };
 
 export default CharacterList;
