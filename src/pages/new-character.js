@@ -1,5 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
+import CharacterForm from '../components/CharacterForm'
 
 const Container = styled.div`
   flex: 1;
@@ -7,8 +8,12 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-`;
+`
 
-const NewCharacter = () => <Container>New character</Container>;
+const NewCharacter = () => (
+  <Container>
+    <CharacterForm />
+  </Container>
+)
 
-export default NewCharacter;
+export default NewCharacter
