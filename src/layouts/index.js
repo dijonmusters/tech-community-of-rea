@@ -1,29 +1,29 @@
 import React from 'react';
 import { Normalize } from 'styled-normalize';
-import ApolloProvider from './context/Apollo';
-import Router from './components/Router';
-import GlobalStyles from './styles/GlobalStyles';
 import styled from 'styled-components';
+
+import ApolloProvider from '../context/Apollo';
+import GlobalStyles from '../styles/GlobalStyles';
 
 const Container = styled.main`
   min-height: 100vh;
   background-color: #ffde22;
+  color: #333;
+  font-weight: 500;
   display: flex;
 `;
 
-const App = () => {
+const Index = ({ children }) => {
   return (
     <ApolloProvider>
       <Normalize />
       <GlobalStyles />
-      <Container>
-        <Router />
-      </Container>
+      <Container>{children}</Container>
     </ApolloProvider>
   );
 };
 
-export default App;
+export default Index;
 
 // TODO: Router
 // TODO: prettier
