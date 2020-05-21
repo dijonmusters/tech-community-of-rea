@@ -2,6 +2,21 @@ const LANGUAGE_URL = '/Languages/Low-res/'
 const IDE_URL = '/IDEs/Low-res/'
 const DREAM_JOB_URL = '/DreamJob/'
 
+const REA_RED = '#e4002b'
+const RCA_BLUE = '#2b6ed2'
+const SPACELY_PURPLE = 'rgb(112, 56, 186)'
+const FLAT_MATES_BLUE = '#2f3a4a'
+
+export const getTheme = theme => {
+  if (!theme) return { main: REA_RED }
+
+  switch(theme.toLowerCase()) {
+    case 'resi': return { main: REA_RED, hue: '0' }
+    case 'rca': return { main: RCA_BLUE, hue: '210' }
+    case 'spacely': return { main: SPACELY_PURPLE , hue: '265'}
+    case 'flatmates': return { main: FLAT_MATES_BLUE, hue: '160' }
+  }
+}
 
 export const getLanguage = lang => `${LANGUAGE_URL}${getLanguageIcon(lang)}`
 
@@ -13,7 +28,7 @@ const getLanguageIcon = lang => {
     case 'scala': return 'scala.png'
     case 'java': return 'java.png'
     case 'ruby': return 'ruby.png'
-    case 'other': return ''
+    case 'other': return 'other.png'
   }
 }
 
@@ -47,7 +62,7 @@ const getIDEStats = ide => {
     case 'jetbrains': return { icon: 'jetbrains.png', points: '2', type: 'neg', text: 'JetBrains' }
     case 'notepad++': return { icon: 'notepad++.png', points: '4', type: 'neg', text: 'Notepad++' }
     case 'vim': return { icon: 'vim.png', points: '4', type: 'pos', text: 'Vim/Emacs/CLI' }
-    case 'other': return { icon: '', points: '0', type: 'neut', text: 'Other' }
+    case 'other': return { icon: 'other.png', points: '0', type: 'neut', text: 'Other' }
   }
 }
 

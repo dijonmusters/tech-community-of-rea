@@ -41,11 +41,12 @@ const Character = () => {
 
   const character = {
     username: 'James "Sensei" Formica',
-    jobLevel: 'Senior Developer',
-    ide: 'vscode',
+    jobLevel: 'Lead Developer',
+    ide: 'Vim',
     language: 'javascript',
-    indentWidth: '1 tab',
-    dreamTitle: 'engineering manager'
+    indentWidth: '2 spaces',
+    dreamTitle: 'engineering manager',
+    theme: 'resi'
   }
 >>>>>>> feat: add all images
 

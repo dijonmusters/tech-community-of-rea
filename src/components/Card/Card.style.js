@@ -1,11 +1,9 @@
 import styled, { css } from 'styled-components'
 
-const REA_RED = '#e4002b'
-
 export const Border = styled.div`
   width: 53mm;
   height: 85mm;
-  background: ${REA_RED};
+  background: ${props => props.theme.main};
   padding: 5px;
   border-radius: 5px;
   display: flex;
@@ -28,8 +26,8 @@ export const LangaugeBackground = styled.div`
   width: 0;
   height: 0;
   border: 25px solid transparent;
-  border-top-color: ${REA_RED};
-  border-left-color: ${REA_RED};
+  border-top-color: ${props => props.theme.main};
+  border-left-color: ${props => props.theme.main};
 
   z-index: 10;
 `
@@ -54,7 +52,7 @@ export const Name = styled.p`
   right: 0;
   width: 100%;
   background-color: white;
-  border-bottom: 4px solid ${REA_RED};
+  border-bottom: 4px solid ${props => props.theme.main};
   font-size: 8px;
   font-weight: bold;
   text-align: center;
@@ -79,25 +77,35 @@ export const Image = styled.div`
     top: calc(100% - 3px);
     width: 100%;
     height: 4px;
-    background: ${REA_RED};
+    background: ${props => props.theme.main};
   }
 `
 
 export const Bg = styled.div`
+  position: relative;
   flex-grow: 1;
   width: 100%;
-  background-image: url('/watercolor_red.jpg');
-  background-size: cover;
   display: flex;
   flex-direction: column;
   box-shadow: inset 0px 0px 6px rgba(0,0,0,0.6);
+`
+
+export const BgForReal = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/watercolor_red.jpg');
+  background-size: cover;
+  filter: hue-rotate(${props => props.theme.hue}deg);
 `
 
 export const Title = styled.span`
   position: relative;
   height: 16px;
   color: white;
-  background: ${REA_RED};
+  background: ${props => props.theme.main};
   padding-left: 5px;
   padding-right: 5px;
   margin-top: -3px;
@@ -111,12 +119,13 @@ export const Title = styled.span`
     position: absolute;
     left: 100%;
     border: 8px solid transparent;
-    border-top-color: ${REA_RED};
-    border-left-color: ${REA_RED};
+    border-top-color: ${props => props.theme.main};
+    border-left-color: ${props => props.theme.main};
   }
 `
 
 export const Stats = styled.div`
+  position: relative;
   width: 100%;
   padding: 5px;
   font-size: 10px;
@@ -146,7 +155,7 @@ export const Stat = styled.span`
   `}
 
   ${props => props.type === 'neg' && css`
-    color: ${REA_RED};
+    color: ${props => props.theme.main};
 
     &::before {
       content: "-"
@@ -192,7 +201,7 @@ export const Footer = styled.div`
   right: 0;
   height: 15px;
   color: white;
-  background: ${REA_RED};
+  background: ${props => props.theme.main};
   padding-left: 5px;
   padding-right: 5px;
   font-size: 8px;
@@ -205,7 +214,7 @@ export const Footer = styled.div`
     position: absolute;
     right: 100%;
     border: 7.5px solid transparent;
-    border-bottom-color: ${REA_RED};
-    border-right-color: ${REA_RED};
+    border-bottom-color: ${props => props.theme.main};
+    border-right-color: ${props => props.theme.main};
   }
 `
