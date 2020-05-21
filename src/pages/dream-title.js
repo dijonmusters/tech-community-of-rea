@@ -120,7 +120,7 @@ const DreamTitle = () => {
 
   const onSubmit = async ({ dreamTitle }) => {
     await updateCharacter({ variables: { id, dreamTitle } })
-    navigate(`/character?id=${id}`)
+    navigate(`/image-upload?id=${id}`)
   }
 
   return (

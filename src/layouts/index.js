@@ -25,6 +25,8 @@ const Index = ({ children }) => {
 
 export default Index
 
+// TODO: Reduce heading font size for each page
+// TODO: Confirm all options
+// TODO: Add drop feedback and loading
 // TODO: Fill in README
-
-// TODO: Talk to James about loading page being a digital version of strings
+// TODO: Create landing page grid layout

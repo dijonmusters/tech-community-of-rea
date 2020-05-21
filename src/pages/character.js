@@ -22,6 +22,7 @@ const CHARACTER = gql`
       ide
       indentWidth
       dreamTitle
+      imageUrl
     }
   }
 `
@@ -34,6 +35,7 @@ const renderCharacter = ({
   ide,
   indentWidth,
   dreamTitle,
+  imageUrl,
 }) => (
   <div key={id}>
     <p>{username}</p>
@@ -42,6 +44,7 @@ const renderCharacter = ({
     <p>{ide}</p>
     <p>{indentWidth}</p>
     <p>{dreamTitle}</p>
+    <p>{imageUrl}</p>
   </div>
 )
 
