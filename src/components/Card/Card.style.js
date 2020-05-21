@@ -51,7 +51,8 @@ export const Name = styled.p`
   top: 0;
   right: 0;
   width: 100%;
-  background-color: white;
+  color: black;
+  background: rgba(255, 255, 255, 0.7);
   border-bottom: 4px solid ${props => props.theme.main};
   font-size: 8px;
   font-weight: bold;
@@ -87,7 +88,6 @@ export const Bg = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  box-shadow: inset 0px 0px 6px rgba(0,0,0,0.6);
 `
 
 export const BgForReal = styled.div`
@@ -98,6 +98,7 @@ export const BgForReal = styled.div`
   height: 100%;
   background-image: url('/watercolor_red.jpg');
   background-size: cover;
+  box-shadow: inset 0px 0px 6px rgba(0,0,0,0.7);
   filter: hue-rotate(${props => props.theme.hue}deg);
 `
 
