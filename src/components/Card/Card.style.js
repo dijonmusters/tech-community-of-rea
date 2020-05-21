@@ -54,7 +54,7 @@ export const Name = styled.p`
   right: 0;
   width: 100%;
   background-color: white;
-  border-bottom: 2px solid ${REA_RED};
+  border-bottom: 4px solid ${REA_RED};
   font-size: 8px;
   font-weight: bold;
   text-align: center;
@@ -69,10 +69,18 @@ export const Image = styled.div`
   position: relative;
   width: 100%;
   height: 50%;
-  border-bottom: 2px solid ${REA_RED};
   background-image: url('${props => props.img}');
   background-size: cover;
   background-position: center;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: calc(100% - 3px);
+    width: 100%;
+    height: 4px;
+    background: ${REA_RED};
+  }
 `
 
 export const Bg = styled.div`
@@ -82,15 +90,17 @@ export const Bg = styled.div`
   background-size: cover;
   display: flex;
   flex-direction: column;
+  box-shadow: inset 0px 0px 6px rgba(0,0,0,0.6);
 `
 
 export const Title = styled.span`
   position: relative;
-  height: 15px;
+  height: 16px;
   color: white;
   background: ${REA_RED};
   padding-left: 5px;
   padding-right: 5px;
+  margin-top: -3px;
   font-size: 8px;
   margin-right: auto;
   display: inline-flex;
@@ -100,7 +110,7 @@ export const Title = styled.span`
     content: "";
     position: absolute;
     left: 100%;
-    border: 7.5px solid transparent;
+    border: 8px solid transparent;
     border-top-color: ${REA_RED};
     border-left-color: ${REA_RED};
   }
