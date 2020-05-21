@@ -73,24 +73,12 @@ export const Image = styled.div`
   background-image: url('${props => props.img}');
   background-size: cover;
   background-position: center;
-
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 0;
-    height: 0;
-    border: 10px solid transparent;
-    border-bottom-color: white;
-    border-right-color: white;
-  }
 `
 
 export const Bg = styled.div`
   flex-grow: 1;
   width: 100%;
-  background-image: url('/static/watercolor_red.jpg');
+  background-image: url('/watercolor_red.jpg');
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -186,4 +174,28 @@ export const IDE = styled(StatIcon)`
   background-image: url('${props => props.icon}');
   background-size: cover;
   background-position: center;
+`
+
+export const Footer = styled.div`
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 15px;
+  color: white;
+  background: ${REA_RED};
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 8px;
+  margin-right: auto;
+  display: inline-flex;
+  align-items: center;
+
+  &::after {
+    content: "";
+    position: absolute;
+    right: 100%;
+    border: 7.5px solid transparent;
+    border-bottom-color: ${REA_RED};
+    border-right-color: ${REA_RED};
+  }
 `

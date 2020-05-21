@@ -1,21 +1,36 @@
-const LANGUAGE_URL = '/static/Languages/Low-res/'
-const IDE_URL = '/static/IDEs/Low-res/'
-const DREAM_JOB_URL = '/static/DreamJob/'
+const LANGUAGE_URL = '/Languages/Low-res/'
+const IDE_URL = '/IDEs/Low-res/'
+const DREAM_JOB_URL = '/DreamJob/'
+
+
+export const getLanguage = lang => `${LANGUAGE_URL}${getLanguageIcon(lang)}`
+
+const getLanguageIcon = lang => {
+  if (!lang) return ''
+
+  switch (lang.toLowerCase()) {
+    case 'javascript': return 'js.png'
+    case 'scala': return 'scala.png'
+    case 'java': return 'java.png'
+    case 'ruby': return 'ruby.png'
+    case 'other': return ''
+  }
+}
 
 export const getDreamJob = dreamJob => {
   const stats = getDreamJobStats(dreamJob)
-  return { ...stats, icon: `${DREAM_JOB_URL}${stats.icon}` }
+  return { ...stats, icon: `${DREAM_JOB_URL}target.svg` }
 }
 
 const getDreamJobStats = dreamJob => {
-  if (!dreamJob) return ''
+  if (!dreamJob) return { icon: '', points: '0', type: 'neut' }
 
   switch (dreamJob.toLowerCase()) {
-    case 'tech lead': return { icon: 'coin.svg', points: '3', type: 'pos' }
-    case 'engineering manager': return { icon: 'hand.svg', points: '5', type: 'pos' }
-    case 'cto': return { icon: 'card.svg', points: '8', type: 'pos' }
-    case 'ceo': return { icon: 'small_stack.svg', points: '5', type: 'pos' }
-    case 'prime minister': return { type: 'fat_stack.svg', points: '5', type: 'neg' }
+    case 'tech lead': return { points: '3', type: 'pos', text: 'Tech Lead' }
+    case 'engineering manager': return { points: '5', type: 'pos', text: 'Eng. Manager' }
+    case 'cto': return { points: '8', type: 'pos', text: 'C.T.O' }
+    case 'ceo': return { points: '5', type: 'pos', text: 'C.E.O' }
+    case 'prime minister': return { points: '5', type: 'neg', text: 'Prime Minister' }
   }
 }
 
@@ -25,21 +40,21 @@ export const getIDE = ide => {
 }
 
 const getIDEStats = ide => {
-  if (!ide) return ''
+  if (!ide) return { icon: '', points: '0', type: 'neut' }
 
   switch (ide.toLowerCase()) {
-    case 'vscode': return { icon: 'vscode.png', points: '2', type: 'pos' }
-    case 'jetbrains': return { icon: 'jetbrains.png', points: '2', type: 'neg' }
-    case 'notepad++': return { icon: 'notepad++.png', points: '4', type: 'neg' }
-    case 'vim': return { icon: 'vim.png', points: '4', type: 'pos' }
-    case 'other': return { icon: '', points: '0', type: 'neut' }
+    case 'vscode': return { icon: 'vscode.png', points: '2', type: 'pos', text: 'Visual Studio Code' }
+    case 'jetbrains': return { icon: 'jetbrains.png', points: '2', type: 'neg', text: 'JetBrains' }
+    case 'notepad++': return { icon: 'notepad++.png', points: '4', type: 'neg', text: 'Notepad++' }
+    case 'vim': return { icon: 'vim.png', points: '4', type: 'pos', text: 'Vim/Emacs/CLI' }
+    case 'other': return { icon: '', points: '0', type: 'neut', text: 'Other' }
   }
 }
 
 export const getIdent = indent => getIndentStats(indent)
 
 const getIndentStats = indent => {
-  if (!indent) return ''
+  if (!indent) return { icon: '?', points: '0', type: 'neut' }
 
   switch (indent.toLowerCase()) {
     case '1 tab': return { points: '4', type: 'neg', icon: '|____|' }

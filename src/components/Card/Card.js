@@ -1,9 +1,9 @@
 import React from 'react'
 
-import { getDreamJob, getIDE, getIdent } from '../../helpers/cardHelper'
+import { getDreamJob, getIDE, getIdent, getLanguage } from '../../helpers/cardHelper'
 import {
   Border, InnerCard, Langauge, LangaugeBackground, Name, Image, Stats,
-  IDE, Stat, Title, Bg, StatText, StatSmol, DreamJob, StatIcon
+  IDE, Stat, Title, Bg, StatText, StatSmol, DreamJob, StatIcon, Footer
 } from './Card.style'
 
 const Card = ({ character }) => {
@@ -17,7 +17,8 @@ const Card = ({ character }) => {
     <Border>
       <InnerCard>
         <LangaugeBackground />
-        <Langauge icon="/static/Languages/Low-res/js.png" />
+        <Langauge icon={getLanguage(character.language)} />
+
         <Image img={profileImage}>
           <Name>{character.username}</Name>
         </Image>
@@ -29,7 +30,7 @@ const Card = ({ character }) => {
             <IDE icon={ide.icon} />
             <StatText>
               <StatSmol>Element</StatSmol>
-              <span>{character.ide}</span>
+              <span>{ide.text}</span>
             </StatText>
             <Stat type={ide.type} points={ide.points}>{ide.points}</Stat>
 
@@ -43,10 +44,12 @@ const Card = ({ character }) => {
             <DreamJob src={dreamJob.icon} />
             <StatText>
               <StatSmol>Final evolution</StatSmol>
-              <span>{character.dreamTitle}</span>
+              <span>{dreamJob.text}</span>
             </StatText>
             <Stat type={dreamJob.type} points={dreamJob.points}>{dreamJob.points}</Stat>
           </Stats>
+
+          <Footer>https://joniscool.com</Footer>
         </Bg>
 
       </InnerCard>

@@ -30,10 +30,24 @@ const CHARACTER = gql`
 `
 
 const Character = () => {
+<<<<<<< HEAD
   const id =
     typeof window !== 'undefined' &&
     new URLSearchParams(window.location.search.substring(1)).get('id')
   const { loading, error, data } = useQuery(CHARACTER, { variables: { id } })
+=======
+  // const id = new URLSearchParams(window.location.search.substring(1)).get('id')
+  // const { loading, error, data } = useQuery(CHARACTER, { variables: { id } })
+
+  const character = {
+    username: 'James "Sensei" Formica',
+    jobLevel: 'Senior Developer',
+    ide: 'vscode',
+    language: 'javascript',
+    indentWidth: '1 tab',
+    dreamTitle: 'engineering manager'
+  }
+>>>>>>> feat: add all images
 
   return (
     <Container>
