@@ -110,7 +110,7 @@ const IndentWidth = () => {
   return (
     <Container>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <Heading>How much space do you need around you?</Heading>
+        <Heading>How much personal space do you need?</Heading>
         <OptionsContainer>
           {options.map((option) => (
             <Option key={option}>

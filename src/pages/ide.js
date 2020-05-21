@@ -110,7 +110,7 @@ const Ide = () => {
   return (
     <Container>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <Heading>In which environment are you strongest?</Heading>
+        <Heading>What is your primary element?</Heading>
         <OptionsContainer>
           {options.map((option) => (
             <Option key={option}>

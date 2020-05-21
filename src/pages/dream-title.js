@@ -126,7 +126,7 @@ const DreamTitle = () => {
   return (
     <Container>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <Heading>Which dream XP level do you want to reach?</Heading>
+        <Heading>What will be your final evolution?</Heading>
         <OptionsContainer>
           {options.map((option) => {
             const [amount, ...titleBits] = option.split(' ')

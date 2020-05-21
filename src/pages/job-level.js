@@ -109,7 +109,7 @@ const JobLevel = () => {
   return (
     <Container>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <Heading>What XP level are you?</Heading>
+        <Heading>How much XP do you have?</Heading>
         <OptionsContainer>
           {options.map((option) => (
             <Option key={option}>
