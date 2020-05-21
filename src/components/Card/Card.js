@@ -1,13 +1,17 @@
 import React from 'react'
 
+import { getDreamJob, getIDE, getIdent } from '../../helpers/cardHelper'
 import {
   Border, InnerCard, Langauge, LangaugeBackground, Name, Image, Stats,
-  IDE, Stat, Title,
+  IDE, Stat, Title, Bg, StatText, StatSmol, DreamJob, StatIcon
 } from './Card.style'
 
 const Card = ({ character }) => {
 
   const profileImage = 'https://avatars2.githubusercontent.com/u/2009724?s=460&u=979eae3bae81ddde1d3f14739b75e8eca7de91b0&v=4'
+  const ide = getIDE(character.ide)
+  const indent = getIdent(character.indentWidth)
+  const dreamJob = getDreamJob(character.dreamTitle)
 
   return (
     <Border>
@@ -18,21 +22,32 @@ const Card = ({ character }) => {
           <Name>{character.username}</Name>
         </Image>
 
-        <Title>{character.jobLevel}</Title>
+        <Bg>
+          <Title>{character.jobLevel}</Title>
 
-        <Stats>
-          <IDE icon="/static/IDEs/Low-res/jetbrains.png" />
-          <div>Weapon of choice</div>
-          <Stat neg>-4pt</Stat>
+          <Stats>
+            <IDE icon={ide.icon} />
+            <StatText>
+              <StatSmol>Element</StatSmol>
+              <span>{character.ide}</span>
+            </StatText>
+            <Stat type={ide.type} points={ide.points}>{ide.points}</Stat>
 
-          <div>|_| |_|</div>
-          <div>2 spaces</div>
-          <Stat>+2pt</Stat>
+            <StatIcon>{indent.icon}</StatIcon>
+            <StatText>
+              <StatSmol>Personal space</StatSmol>
+              <span>{character.indentWidth}</span>
+            </StatText>
+            <Stat type={indent.type} points={indent.points}>{indent.points}</Stat>
 
-          <div>CTO</div>
-          <div>Dream job</div>
-          <Stat>+$$$</Stat>
-        </Stats>
+            <DreamJob src={dreamJob.icon} />
+            <StatText>
+              <StatSmol>Final evolution</StatSmol>
+              <span>{character.dreamTitle}</span>
+            </StatText>
+            <Stat type={dreamJob.type} points={dreamJob.points}>{dreamJob.points}</Stat>
+          </Stats>
+        </Bg>
 
       </InnerCard>
     </Border>

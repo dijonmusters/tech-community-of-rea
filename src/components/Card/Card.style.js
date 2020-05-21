@@ -1,9 +1,11 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+
+const REA_RED = '#e4002b'
 
 export const Border = styled.div`
   width: 53mm;
   height: 85mm;
-  background: #e4002b;
+  background: ${REA_RED};
   padding: 5px;
   border-radius: 5px;
   display: flex;
@@ -26,8 +28,8 @@ export const LangaugeBackground = styled.div`
   width: 0;
   height: 0;
   border: 25px solid transparent;
-  border-top-color: #e4002b;
-  border-left-color: #e4002b;
+  border-top-color: ${REA_RED};
+  border-left-color: ${REA_RED};
 
   z-index: 10;
 `
@@ -52,7 +54,7 @@ export const Name = styled.p`
   right: 0;
   width: 100%;
   background-color: white;
-  border-bottom: 4px solid #e4002b;
+  border-bottom: 2px solid ${REA_RED};
   font-size: 8px;
   font-weight: bold;
   text-align: center;
@@ -67,6 +69,7 @@ export const Image = styled.div`
   position: relative;
   width: 100%;
   height: 50%;
+  border-bottom: 2px solid ${REA_RED};
   background-image: url('${props => props.img}');
   background-size: cover;
   background-position: center;
@@ -84,12 +87,22 @@ export const Image = styled.div`
   }
 `
 
+export const Bg = styled.div`
+  flex-grow: 1;
+  width: 100%;
+  background-image: url('/static/watercolor_red.jpg');
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+`
+
 export const Title = styled.span`
   position: relative;
   height: 15px;
   color: white;
-  background: #e4002b;
+  background: ${REA_RED};
   padding-left: 5px;
+  padding-right: 5px;
   font-size: 8px;
   margin-right: auto;
   display: inline-flex;
@@ -100,8 +113,8 @@ export const Title = styled.span`
     position: absolute;
     left: 100%;
     border: 7.5px solid transparent;
-    border-top-color: #e4002b;
-    border-left-color: #e4002b;
+    border-top-color: ${REA_RED};
+    border-left-color: ${REA_RED};
   }
 `
 
@@ -109,25 +122,68 @@ export const Stats = styled.div`
   width: 100%;
   padding: 5px;
   font-size: 10px;
+  margin-top: 10px;
   display: grid;
-  grid-column-gap: 5px;
+  grid-column-gap: 8px;
   grid-row-gap: 10px;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
 `
 
-export const IDE = styled.div`
+export const Stat = styled.span`
+  font-weight: bold;
+  text-align: right;
+
+  &::after {
+    content: "${props => props.points === 1 ? ' pt' : ' pts'}";
+    font-size: 6px;
+  }
+
+  ${props => props.type === 'pos' && css`
+    color: green;
+
+    &::before {
+      content: "+"
+    }
+  `}
+
+  ${props => props.type === 'neg' && css`
+    color: ${REA_RED};
+
+    &::before {
+      content: "-"
+    }
+  `}
+`
+
+export const StatText = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+`
+
+export const StatSmol = styled.span`
+  font-size: 6px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 2px;
+  opacity: 0.65;
+`
+
+export const StatIcon = styled.div`
+  justify-self: center;
+`
+
+export const DreamJob = styled.img`
+  justify-self: center;
+  width: 20px;
+  color: crimson;
+`
+
+export const IDE = styled(StatIcon)`
   width: 20px;
   height: 20px;
   background-image: url('${props => props.icon}');
   background-size: cover;
   background-position: center;
-`
-
-export const Stat = styled.span`
-  font-family: monospace;
-  font-weight: bold;
-  text-align: right;
-
-  color: ${props => props.neg ? 'crimson' : 'forestgreen'};
 `
