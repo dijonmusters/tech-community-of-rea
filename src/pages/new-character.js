@@ -71,7 +71,7 @@ const NewCharacter = () => {
   return (
     <Container>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <Label htmlFor="username">Nickname</Label>
+        <Label htmlFor="username">What is your hero's name?</Label>
         <Input name="username" ref={register({ required: true })} />
         {errors.username && 'Username is required.'}
         <Button type="submit">Next</Button>

@@ -87,36 +87,36 @@ const Button = styled.button`
 `
 
 const UPDATE_CHARACTER = gql`
-  mutation UpdateJobLevel($jobLevel: String!) {
-    updateCharacter(input: { jobLevel: $jobLevel }) {
+  mutation UpdateLanguage($id: String!, $language: String!) {
+    updateCharacter(input: { id: $id, language: $language }) {
       id
     }
   }
 `
 
-const options = ['Ruby', 'JavaScript', 'Scala']
+const options = ['Ruby', 'JavaScript', 'Scala', 'Python', 'PHP (other)']
 
 const Language = () => {
   const [updateCharacter] = useMutation(UPDATE_CHARACTER)
   const { register, handleSubmit, errors } = useForm()
   const id = new URLSearchParams(window.location.search.substring(1)).get('id')
 
-  const onSubmit = async ({ jobLevel }) => {
-    await updateCharacter({ variables: { jobLevel } })
+  const onSubmit = async ({ language }) => {
+    await updateCharacter({ variables: { id, language } })
     navigate(`/ide?id=${id}`)
   }
 
   return (
     <Container>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <Heading>Weapon of choice?</Heading>
+        <Heading>What is your weapon of choice?</Heading>
         <OptionsContainer>
           {options.map((option) => (
             <Option key={option}>
               <OptionInput
                 type="radio"
                 id={option}
-                name="jobLevel"
+                name="language"
                 value={option}
                 ref={register({ required: true })}
               />
@@ -124,7 +124,7 @@ const Language = () => {
             </Option>
           ))}
         </OptionsContainer>
-        {errors.jobLevel && 'Job level is required.'}
+        {errors.language && 'Language is required.'}
         <Button type="submit">Next</Button>
       </Form>
     </Container>

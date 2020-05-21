@@ -33,7 +33,8 @@ const OptionsContainer = styled.div`
 `
 
 const Option = styled.div`
-  flex: 1;
+  flex-grow: 1;
+  flex-shrink: 0;
   text-align: center;
   margin-left: 0.25rem;
   margin-right: 0.25rem;
@@ -87,36 +88,36 @@ const Button = styled.button`
 `
 
 const UPDATE_CHARACTER = gql`
-  mutation UpdateJobLevel($id: String!, $jobLevel: String!) {
-    updateCharacter(input: { id: $id, jobLevel: $jobLevel }) {
+  mutation UpdateIde($id: String!, $ide: String!) {
+    updateCharacter(input: { id: $id, ide: $ide }) {
       id
     }
   }
 `
 
-const options = ['Associate/Grad', 'Mid', 'Senior', 'Lead', '$']
+const options = ['VS Code', 'Vim/Emacs/CLI', 'Jetbrains', 'Notepad++', 'Other']
 
-const JobLevel = () => {
+const Ide = () => {
   const [updateCharacter] = useMutation(UPDATE_CHARACTER)
   const { register, handleSubmit, errors } = useForm()
   const id = new URLSearchParams(window.location.search.substring(1)).get('id')
 
-  const onSubmit = async ({ jobLevel }) => {
-    await updateCharacter({ variables: { id, jobLevel } })
-    navigate(`/language?id=${id}`)
+  const onSubmit = async ({ ide }) => {
+    await updateCharacter({ variables: { id, ide } })
+    navigate(`/indent-width?id=${id}`)
   }
 
   return (
     <Container>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <Heading>What XP level are you?</Heading>
+        <Heading>In which environment are you strongest?</Heading>
         <OptionsContainer>
           {options.map((option) => (
             <Option key={option}>
               <OptionInput
                 type="radio"
                 id={option}
-                name="jobLevel"
+                name="ide"
                 value={option}
                 ref={register({ required: true })}
               />
@@ -124,11 +125,11 @@ const JobLevel = () => {
             </Option>
           ))}
         </OptionsContainer>
-        {errors.jobLevel && 'Job level is required.'}
+        {errors.jobLevel && 'IDE is required.'}
         <Button type="submit">Next</Button>
       </Form>
     </Container>
   )
 }
 
-export default JobLevel
+export default Ide

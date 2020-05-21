@@ -27,7 +27,7 @@ const typeDefs = gql`
   }
 
   input CreateCharacterInput {
-    id: String!
+    username: String!
   }
 
   type Query {

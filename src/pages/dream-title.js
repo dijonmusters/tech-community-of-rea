@@ -33,7 +33,8 @@ const OptionsContainer = styled.div`
 `
 
 const Option = styled.div`
-  flex: 1;
+  flex-grow: 1;
+  flex-shrink: 0;
   text-align: center;
   margin-left: 0.25rem;
   margin-right: 0.25rem;
@@ -71,6 +72,16 @@ const OptionLabel = styled.label`
   }
 `
 
+const Amount = styled.span`
+  display: block;
+  font-size: 1rem;
+  color: #777;
+  margin-bottom: 0.5rem;
+`
+const Title = styled.span`
+  display: block;
+`
+
 const Button = styled.button`
   align-self: flex-end;
   border: 0;
@@ -87,48 +98,62 @@ const Button = styled.button`
 `
 
 const UPDATE_CHARACTER = gql`
-  mutation UpdateJobLevel($id: String!, $jobLevel: String!) {
-    updateCharacter(input: { id: $id, jobLevel: $jobLevel }) {
+  mutation UpdateDreamTitle($id: String!, $dreamTitle: String!) {
+    updateCharacter(input: { id: $id, dreamTitle: $dreamTitle }) {
       id
     }
   }
 `
 
-const options = ['Associate/Grad', 'Mid', 'Senior', 'Lead', '$']
+const options = [
+  '$ Lead',
+  '$$ EM',
+  '$$$ CTO',
+  '$$$$ CEO',
+  '$$$$$ Phillip Price',
+]
 
-const JobLevel = () => {
+const DreamTitle = () => {
   const [updateCharacter] = useMutation(UPDATE_CHARACTER)
   const { register, handleSubmit, errors } = useForm()
   const id = new URLSearchParams(window.location.search.substring(1)).get('id')
 
-  const onSubmit = async ({ jobLevel }) => {
-    await updateCharacter({ variables: { id, jobLevel } })
-    navigate(`/language?id=${id}`)
+  const onSubmit = async ({ dreamTitle }) => {
+    await updateCharacter({ variables: { id, dreamTitle } })
+    navigate(`/character?id=${id}`)
   }
 
   return (
     <Container>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <Heading>What XP level are you?</Heading>
+        <Heading>Which dream XP level do you want to reach?</Heading>
         <OptionsContainer>
-          {options.map((option) => (
-            <Option key={option}>
-              <OptionInput
-                type="radio"
-                id={option}
-                name="jobLevel"
-                value={option}
-                ref={register({ required: true })}
-              />
-              <OptionLabel htmlFor={option}>{option}</OptionLabel>
-            </Option>
-          ))}
+          {options.map((option) => {
+            const [amount, ...titleBits] = option.split(' ')
+            const title = titleBits.join(' ')
+
+            return (
+              <Option key={option}>
+                <OptionInput
+                  type="radio"
+                  id={option}
+                  name="dreamTitle"
+                  value={option}
+                  ref={register({ required: true })}
+                />
+                <OptionLabel htmlFor={option}>
+                  <Amount>{amount}</Amount>
+                  <Title>{title}</Title>
+                </OptionLabel>
+              </Option>
+            )
+          })}
         </OptionsContainer>
-        {errors.jobLevel && 'Job level is required.'}
-        <Button type="submit">Next</Button>
+        {errors.jobLevel && 'Dream title is required.'}
+        <Button type="submit">Save character</Button>
       </Form>
     </Container>
   )
 }
 
-export default JobLevel
+export default DreamTitle
