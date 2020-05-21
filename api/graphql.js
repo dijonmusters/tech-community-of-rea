@@ -1,5 +1,5 @@
-import { ApolloServer, gql } from 'apollo-server-micro';
-import { characters, character, createCharacter, updateCharacter } from './_db';
+import { ApolloServer, gql } from 'apollo-server-micro'
+import { characters, character, createCharacter, updateCharacter } from './_db'
 
 const typeDefs = gql`
   type Character {
@@ -27,7 +27,7 @@ const typeDefs = gql`
   }
 
   input CreateCharacterInput {
-    username: String!
+    id: String!
   }
 
   type Query {
@@ -39,7 +39,7 @@ const typeDefs = gql`
     createCharacter(input: CreateCharacterInput): Character
     updateCharacter(input: UpdateCharacterInput): Character
   }
-`;
+`
 
 const resolvers = {
   Query: {
@@ -50,13 +50,13 @@ const resolvers = {
     createCharacter,
     updateCharacter,
   },
-};
+}
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-});
+})
 
-const handler = server.createHandler();
+const handler = server.createHandler()
 
-export default handler;
+export default handler

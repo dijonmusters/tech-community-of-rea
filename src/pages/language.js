@@ -94,9 +94,9 @@ const UPDATE_CHARACTER = gql`
   }
 `
 
-const options = ['Associate/Grad', 'Mid/Senior', 'Rich']
+const options = ['Ruby', 'JavaScript', 'Scala']
 
-const Ide = () => {
+const Language = () => {
   const [updateCharacter] = useMutation(UPDATE_CHARACTER)
   const { register, handleSubmit, errors } = useForm()
   const id = new URLSearchParams(window.location.search.substring(1)).get('id')
@@ -109,7 +109,7 @@ const Ide = () => {
   return (
     <Container>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <Heading>What level are you?</Heading>
+        <Heading>Weapon of choice?</Heading>
         <OptionsContainer>
           {options.map((option) => (
             <Option key={option}>
@@ -131,4 +131,4 @@ const Ide = () => {
   )
 }
 
-export default Ide
+export default Language

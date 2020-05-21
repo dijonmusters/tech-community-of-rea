@@ -103,13 +103,13 @@ const JobLevel = () => {
 
   const onSubmit = async ({ jobLevel }) => {
     await updateCharacter({ variables: { id, jobLevel } })
-    navigate(`/ide?id=${id}`)
+    navigate(`/language?id=${id}`)
   }
 
   return (
     <Container>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <Heading>What level are you?</Heading>
+        <Heading>What XP level are you?</Heading>
         <OptionsContainer>
           {options.map((option) => (
             <Option key={option}>
