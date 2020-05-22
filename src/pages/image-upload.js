@@ -87,7 +87,7 @@ const ImageUpload = () => {
         ) : (
           <Dropzone {...getRootProps()}>
             {isUploading ? (
-              <Message>Uploading image</Message>
+              <Message>Uploading image...</Message>
             ) : (
               <>
                 <input {...getInputProps()} />

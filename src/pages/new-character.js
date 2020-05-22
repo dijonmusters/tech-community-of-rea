@@ -78,7 +78,7 @@ const NewCharacter = () => {
     const { data } = await createCharacter({ variables: { username } })
     const { id } = data.createCharacter
     login(id)
-    navigate('/job-level')
+    navigate('/area-of-business')
   }
 
   return (

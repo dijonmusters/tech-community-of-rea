@@ -11,6 +11,7 @@ const typeDefs = gql`
   type Character {
     id: String!
     username: String
+    areaOfBusiness: String
     jobLevel: String
     ide: String
     language: String
@@ -30,6 +31,7 @@ const typeDefs = gql`
   input UpdateCharacterInput {
     id: String!
     username: String
+    areaOfBusiness: String
     jobLevel: String
     ide: String
     language: String

@@ -60,7 +60,7 @@ const Index = () => {
       {!isLoggedIn() ? (
         <Button to="/new-character">Create new character</Button>
       ) : (
-        <Button to="/job-level">Change your character</Button>
+        <Button to="/area-of-business">Change your character</Button>
       )}
       {data && data.characters.map(renderCharacter)}
     </Container>
