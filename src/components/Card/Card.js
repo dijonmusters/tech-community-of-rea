@@ -78,7 +78,7 @@ const Card = ({ character }) => {
               </Stat>
             </Stats>
 
-            <Footer>https://joniscool.com</Footer>
+            <Footer>https://tech-community-of-rea.now.sh</Footer>
           </Bg>
         </InnerCard>
       </Border>
