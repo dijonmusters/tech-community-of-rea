@@ -1,7 +1,10 @@
 const useUser = () => {
-  const login = (id) => localStorage.setItem('id', id)
-  const logout = () => localStorage.removeItem('id')
-  const getId = () => localStorage.getItem('id')
+  const login = (id) =>
+    typeof window !== 'undefined' && localStorage.setItem('id', id)
+  const logout = () =>
+    typeof window !== 'undefined' && localStorage.removeItem('id')
+  const getId = () =>
+    typeof window !== 'undefined' && localStorage.getItem('id')
   const isLoggedIn = () => !!getId()
 
   return {
