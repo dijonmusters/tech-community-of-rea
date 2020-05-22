@@ -148,7 +148,7 @@ export const Stat = styled.span`
   }
 
   ${props => props.type === 'pos' && css`
-    color: green;
+    color: #05ac82;
 
     &::before {
       content: "+"
@@ -156,7 +156,7 @@ export const Stat = styled.span`
   `}
 
   ${props => props.type === 'neg' && css`
-    color: ${props => props.theme.main};
+    color: #F26B7A;
 
     &::before {
       content: "-"
