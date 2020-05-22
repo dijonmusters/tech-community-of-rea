@@ -4,6 +4,7 @@ import { gql } from 'apollo-boost'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 import useUser from '../hooks/useUser'
+import Card from '../components/Card/Card'
 
 const Container = styled.div`
   position: relative;
@@ -12,6 +13,13 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+`
+
+const CardLayout = styled.div`
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 53mm);
+  grid-gap: 0.5rem;
 `
 
 const Button = styled(Link)`
@@ -47,10 +55,8 @@ const CHARACTERS = gql`
   }
 `
 
-const renderCharacter = ({ id, username }) => (
-  <div key={id}>
-    <p>{username}</p>
-  </div>
+const renderCharacter = (character) => (
+  <Card character={character} key={character.id} />
 )
 
 const Index = () => {
@@ -66,7 +72,8 @@ const Index = () => {
       ) : (
         <Button to="/area-of-business">Change your character</Button>
       )}
-      {data && data.characters.map(renderCharacter)}
+
+      {data && <CardLayout>{data.characters.map(renderCharacter)}</CardLayout>}
     </Container>
   )
 }
