@@ -56,9 +56,19 @@ const CHARACTERS = gql`
   }
 `
 
-const renderCharacter = (character) => (
-  <Card character={character} key={character.id} />
-)
+const hasAllData = (character) =>
+  character.id &&
+  character.username &&
+  character.areaOfBusiness &&
+  character.jobLevel &&
+  character.language &&
+  character.ide &&
+  character.indentWidth &&
+  character.dreamTitle &&
+  character.imageUrl
+
+const renderCharacter = (character) =>
+  hasAllData(character) && <Card character={character} key={character.id} />
 
 const Index = () => {
   const { loading, error, data } = useQuery(CHARACTERS)

@@ -25,5 +25,6 @@ const Index = ({ children }) => {
 
 export default Index
 
+// TODO: Make camera work on mobile - confirm all pages work
 // TODO: Style form errors?
 // TODO: Fill in README?
