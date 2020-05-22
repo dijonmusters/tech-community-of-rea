@@ -51,7 +51,9 @@ const renderCharacter = ({
 )
 
 const Character = () => {
-  const id = new URLSearchParams(window.location.search.substring(1)).get('id')
+  const id =
+    typeof window !== 'undefined' &&
+    new URLSearchParams(window.location.search.substring(1)).get('id')
   const { loading, error, data } = useQuery(CHARACTER, { variables: { id } })
 
   return (
