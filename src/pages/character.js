@@ -2,7 +2,6 @@ import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
 import styled from 'styled-components'
-import { Link } from 'gatsby'
 
 const Container = styled.div`
   flex: 1;
@@ -17,11 +16,13 @@ const CHARACTER = gql`
     character(input: { id: $id }) {
       id
       username
+      areaOfBusiness
       jobLevel
       language
       ide
       indentWidth
       dreamTitle
+      imageUrl
     }
   }
 `
@@ -29,19 +30,23 @@ const CHARACTER = gql`
 const renderCharacter = ({
   id,
   username,
+  areaOfBusiness,
   jobLevel,
   language,
   ide,
   indentWidth,
   dreamTitle,
+  imageUrl,
 }) => (
   <div key={id}>
     <p>{username}</p>
+    <p>{areaOfBusiness}</p>
     <p>{jobLevel}</p>
     <p>{language}</p>
     <p>{ide}</p>
     <p>{indentWidth}</p>
     <p>{dreamTitle}</p>
+    <p>{imageUrl}</p>
   </div>
 )
 

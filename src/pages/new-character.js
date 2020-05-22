@@ -4,6 +4,7 @@ import { useMutation } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
 import { navigate } from 'gatsby'
 import styled from 'styled-components'
+import useUser from '../hooks/useUser'
 
 const Container = styled.div`
   flex: 1;
@@ -20,7 +21,7 @@ const Form = styled.form`
 `
 
 const Label = styled.label`
-  font-size: 3rem;
+  font-size: 2rem;
   color: #666;
   margin-bottom: 1rem;
   text-transform: uppercase;
@@ -31,7 +32,7 @@ const Input = styled.input`
   border: none;
   padding: 1rem 2rem;
   margin-bottom: 1rem;
-  font-size: 3rem;
+  font-size: 2rem;
   color: #555;
 `
 
@@ -58,21 +59,37 @@ const CREATE_CHARACTER = gql`
   }
 `
 
+const options = [
+  'Jon "The Great Gatsby" Meyers',
+  'James "MicroManager" Formica',
+  'James "CSS Sensei" Formica',
+  'Jon "TypeScript Sucks" Meyers',
+]
+
+const getRandomOption = () =>
+  options[Math.floor(Math.random() * Math.floor(options.length))]
+
 const NewCharacter = () => {
   const [createCharacter] = useMutation(CREATE_CHARACTER)
   const { register, handleSubmit, errors } = useForm()
+  const { login } = useUser()
 
   const onSubmit = async ({ username }) => {
     const { data } = await createCharacter({ variables: { username } })
     const { id } = data.createCharacter
-    navigate(`/job-level?id=${id}`)
+    login(id)
+    navigate('/area-of-business')
   }
 
   return (
     <Container>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <Label htmlFor="username">Nickname</Label>
-        <Input name="username" ref={register({ required: true })} />
+        <Label htmlFor="username">What is your name?</Label>
+        <Input
+          name="username"
+          ref={register({ required: true })}
+          placeholder={getRandomOption()}
+        />
         {errors.username && 'Username is required.'}
         <Button type="submit">Next</Button>
       </Form>

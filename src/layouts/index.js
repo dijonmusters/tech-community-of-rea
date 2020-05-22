@@ -25,6 +25,11 @@ const Index = ({ children }) => {
 
 export default Index
 
-// TODO: Fill in README
-
-// TODO: Talk to James about loading page being a digital version of strings
+// TODO: Add drop feedback and loading
+// TODO: Confirm all options
+// TODO: Create landing page grid layout
+// TODO: Build hype
+// TODO: Delete test records
+// TODO: Style form errors?
+// TODO: Fill in README?
+// TODO: Add a loading spinner for image upload

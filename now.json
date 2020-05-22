@@ -1,6 +1,8 @@
 {
   "env": {
-    "FAUNA_KEY": "@tech-community-of-rea-fauna-key"
+    "FAUNA_KEY": "@tech-community-of-rea-fauna-key",
+    "CLOUDINARY_ID": "@tech-community-of-rea-cloudinary-id",
+    "CLOUDINARY_SECRET": "@tech-community-of-rea-cloudinary-secret"
   },
   "routes": [{ "src": "/graphql", "dest": "/api/graphql" }]
 }

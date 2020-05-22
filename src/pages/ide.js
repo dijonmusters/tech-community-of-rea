@@ -16,37 +16,37 @@ import {
 } from '../components/styled'
 
 const UPDATE_CHARACTER = gql`
-  mutation UpdateJobLevel($id: String!, $jobLevel: String!) {
-    updateCharacter(input: { id: $id, jobLevel: $jobLevel }) {
+  mutation UpdateIde($id: String!, $ide: String!) {
+    updateCharacter(input: { id: $id, ide: $ide }) {
       id
     }
   }
 `
 
-const options = ['Associate/Grad', 'Mid', 'Senior', 'Lead', '$$$']
+const options = ['VS Code', 'CLI', 'Jetbrains', 'Notepad++', 'Other']
 
-const JobLevel = () => {
+const Ide = () => {
   const [updateCharacter] = useMutation(UPDATE_CHARACTER)
   const { register, handleSubmit, errors } = useForm()
   const { getId } = useUser()
 
-  const onSubmit = async ({ jobLevel }) => {
+  const onSubmit = async ({ ide }) => {
     const id = getId()
-    await updateCharacter({ variables: { id, jobLevel } })
-    navigate('/language')
+    await updateCharacter({ variables: { id, ide } })
+    navigate('/indent-width')
   }
 
   return (
     <Page>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <Heading>How much XP do you have?</Heading>
+        <Heading>What is your primary element?</Heading>
         <OptionsContainer>
           {options.map((option) => (
             <Option key={option}>
               <OptionInput
                 type="radio"
                 id={option}
-                name="jobLevel"
+                name="ide"
                 value={option}
                 ref={register({ required: true })}
               />
@@ -54,11 +54,11 @@ const JobLevel = () => {
             </Option>
           ))}
         </OptionsContainer>
-        {errors.jobLevel && 'Job level is required.'}
+        {errors.jobLevel && 'IDE is required.'}
         <Button type="submit">Next</Button>
       </Form>
     </Page>
   )
 }
 
-export default JobLevel
+export default Ide

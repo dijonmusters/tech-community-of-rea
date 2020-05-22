@@ -3,8 +3,10 @@ import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
+import useUser from '../hooks/useUser'
 
 const Container = styled.div`
+  position: relative;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -13,6 +15,9 @@ const Container = styled.div`
 `
 
 const Button = styled(Link)`
+  position: fixed;
+  top: 0.5rem;
+  right: 0.5rem;
   font-family: inherit;
   font-size: 100%;
   background: #ff5157;
@@ -46,13 +51,18 @@ const renderCharacter = ({ id, username }) => (
 
 const Index = () => {
   const { loading, error, data } = useQuery(CHARACTERS)
+  const { isLoggedIn } = useUser()
 
   return (
     <Container>
       {loading && <p>Loading...</p>}
       {error && <p>Error :(</p>}
+      {!isLoggedIn() ? (
+        <Button to="/new-character">Create new character</Button>
+      ) : (
+        <Button to="/area-of-business">Change your character</Button>
+      )}
       {data && data.characters.map(renderCharacter)}
-      <Button to="/new-character">Create new character</Button>
     </Container>
   )
 }

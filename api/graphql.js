@@ -1,15 +1,27 @@
 import { ApolloServer, gql } from 'apollo-server-micro'
-import { characters, character, createCharacter, updateCharacter } from './_db'
+import {
+  characters,
+  character,
+  createCharacter,
+  updateCharacter,
+  uploadImage,
+} from './_db'
 
 const typeDefs = gql`
   type Character {
     id: String!
     username: String
+    areaOfBusiness: String
     jobLevel: String
     ide: String
     language: String
     indentWidth: String
     dreamTitle: String
+    imageUrl: String
+  }
+
+  type Url {
+    url: String
   }
 
   input CharacterInput {
@@ -19,15 +31,21 @@ const typeDefs = gql`
   input UpdateCharacterInput {
     id: String!
     username: String
+    areaOfBusiness: String
     jobLevel: String
     ide: String
     language: String
     indentWidth: String
     dreamTitle: String
+    imageUrl: String
   }
 
   input CreateCharacterInput {
-    id: String!
+    username: String!
+  }
+
+  input UploadImageInput {
+    image: Upload!
   }
 
   type Query {
@@ -38,6 +56,7 @@ const typeDefs = gql`
   type Mutation {
     createCharacter(input: CreateCharacterInput): Character
     updateCharacter(input: UpdateCharacterInput): Character
+    uploadImage(input: UploadImageInput): Url
   }
 `
 
@@ -49,6 +68,7 @@ const resolvers = {
   Mutation: {
     createCharacter,
     updateCharacter,
+    uploadImage,
   },
 }
 
