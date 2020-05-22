@@ -36,9 +36,13 @@ const CHARACTERS = gql`
     characters {
       id
       username
+      areaOfBusiness
       jobLevel
-      ide
       language
+      ide
+      indentWidth
+      dreamTitle
+      imageUrl
     }
   }
 `

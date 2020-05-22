@@ -35,7 +35,7 @@ const Card = ({ character }) => {
   const dreamJob = getDreamJob(character.dreamTitle)
 
   return (
-    <ThemeProvider theme={getTheme(character.theme)}>
+    <ThemeProvider theme={getTheme(character.areaOfBusiness)}>
       <Border>
         <InnerCard>
           <LangaugeBackground />
