@@ -1,6 +1,6 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
-
+import { navigate } from 'gatsby'
 import {
   getDreamJob,
   getIDE,
@@ -33,10 +33,11 @@ const Card = ({ character }) => {
   const ide = getIDE(character.ide)
   const indent = getIdent(character.indentWidth)
   const dreamJob = getDreamJob(character.dreamTitle)
+  const characterUrl = `/character?id=${character.id}`
 
   return (
     <ThemeProvider theme={getTheme(character.areaOfBusiness)}>
-      <Border>
+      <Border onClick={() => navigate(characterUrl)}>
         <InnerCard>
           <LangaugeBackground />
           <Langauge icon={getLanguage(character.language)} />

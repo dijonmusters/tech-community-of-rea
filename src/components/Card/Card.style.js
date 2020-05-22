@@ -3,10 +3,14 @@ import styled, { css } from 'styled-components'
 export const Border = styled.div`
   width: 53mm;
   height: 85mm;
-  background: ${props => props.theme.main};
+  background: ${(props) => props.theme.main};
   padding: 5px;
   border-radius: 5px;
   display: flex;
+
+  &:hover {
+    cursor: pointer;
+  }
 `
 
 export const InnerCard = styled.div`
@@ -26,8 +30,8 @@ export const LangaugeBackground = styled.div`
   width: 0;
   height: 0;
   border: 25px solid transparent;
-  border-top-color: ${props => props.theme.main};
-  border-left-color: ${props => props.theme.main};
+  border-top-color: ${(props) => props.theme.main};
+  border-left-color: ${(props) => props.theme.main};
 
   z-index: 10;
 `
@@ -37,7 +41,7 @@ export const Langauge = styled(LangaugeBackground)`
   height: 50px;
   border-radius: 50%;
   background-color: white;
-  background-image: url('${props => props.icon}');
+  background-image: url('${(props) => props.icon}');
   background-size: 40%;
   background-position: center;
   border: 2.5px solid white;
@@ -53,7 +57,7 @@ export const Name = styled.p`
   width: 100%;
   color: black;
   background: rgba(255, 255, 255, 0.7);
-  border-bottom: 4px solid ${props => props.theme.main};
+  border-bottom: 4px solid ${(props) => props.theme.main};
   font-size: 8px;
   font-weight: bold;
   text-align: center;
@@ -68,7 +72,7 @@ export const Image = styled.div`
   position: relative;
   width: 100%;
   height: 50%;
-  background-image: url('${props => props.img}');
+  background-image: url('${(props) => props.img}');
   background-size: cover;
   background-position: center;
 
@@ -78,7 +82,7 @@ export const Image = styled.div`
     top: calc(100% - 3px);
     width: 100%;
     height: 4px;
-    background: ${props => props.theme.main};
+    background: ${(props) => props.theme.main};
   }
 `
 
@@ -98,15 +102,15 @@ export const BgForReal = styled.div`
   height: 100%;
   background-image: url('/watercolor_red.jpg');
   background-size: cover;
-  box-shadow: inset 0px 0px 6px rgba(0,0,0,0.7);
-  filter: hue-rotate(${props => props.theme.hue}deg);
+  box-shadow: inset 0px 0px 6px rgba(0, 0, 0, 0.7);
+  filter: hue-rotate(${(props) => props.theme.hue}deg);
 `
 
 export const Title = styled.span`
   position: relative;
   height: 16px;
   color: white;
-  background: ${props => props.theme.main};
+  background: ${(props) => props.theme.main};
   padding-left: 5px;
   padding-right: 5px;
   margin-top: -3px;
@@ -116,12 +120,12 @@ export const Title = styled.span`
   align-items: center;
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     left: 100%;
     border: 8px solid transparent;
-    border-top-color: ${props => props.theme.main};
-    border-left-color: ${props => props.theme.main};
+    border-top-color: ${(props) => props.theme.main};
+    border-left-color: ${(props) => props.theme.main};
   }
 `
 
@@ -143,25 +147,29 @@ export const Stat = styled.span`
   text-align: right;
 
   &::after {
-    content: "${props => props.points === 1 ? ' pt' : ' pts'}";
+    content: "${(props) => (props.points === 1 ? ' pt' : ' pts')}";
     font-size: 6px;
   }
 
-  ${props => props.type === 'pos' && css`
-    color: #05ac82;
+  ${(props) =>
+    props.type === 'pos' &&
+    css`
+      color: #05ac82;
 
-    &::before {
-      content: "+"
-    }
-  `}
+      &::before {
+        content: '+';
+      }
+    `}
 
-  ${props => props.type === 'neg' && css`
-    color: #F26B7A;
+  ${(props) =>
+    props.type === 'neg' &&
+    css`
+      color: #f26b7a;
 
-    &::before {
-      content: "-"
-    }
-  `}
+      &::before {
+        content: '-';
+      }
+    `}
 `
 
 export const StatText = styled.div`
@@ -191,7 +199,7 @@ export const DreamJob = styled.img`
 export const IDE = styled(StatIcon)`
   width: 20px;
   height: 20px;
-  background-image: url('${props => props.icon}');
+  background-image: url('${(props) => props.icon}');
   background-size: cover;
   background-position: center;
 `
@@ -202,7 +210,7 @@ export const Footer = styled.div`
   right: 0;
   height: 15px;
   color: white;
-  background: ${props => props.theme.main};
+  background: ${(props) => props.theme.main};
   padding-left: 5px;
   padding-right: 5px;
   font-size: 8px;
@@ -211,11 +219,11 @@ export const Footer = styled.div`
   align-items: center;
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     right: 100%;
     border: 7.5px solid transparent;
-    border-bottom-color: ${props => props.theme.main};
-    border-right-color: ${props => props.theme.main};
+    border-bottom-color: ${(props) => props.theme.main};
+    border-right-color: ${(props) => props.theme.main};
   }
 `

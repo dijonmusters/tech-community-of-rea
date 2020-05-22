@@ -25,6 +25,10 @@ const Heading = styled.h2`
 const OptionsContainer = styled.div`
   display: flex;
   margin-bottom: 1rem;
+
+  @media only screen and (max-width: 800px) {
+    flex-direction: column;
+  }
 `
 
 const Option = styled.div`
