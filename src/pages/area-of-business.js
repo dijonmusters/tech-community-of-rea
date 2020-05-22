@@ -23,7 +23,7 @@ const UPDATE_CHARACTER = gql`
   }
 `
 
-const options = ['Residential', 'Spacely', 'Real Commercial', 'Other']
+const options = ['Residential', 'Spacely', 'Real Commercial', 'Flatmates']
 
 const AreaOfBusiness = () => {
   const [updateCharacter] = useMutation(UPDATE_CHARACTER)

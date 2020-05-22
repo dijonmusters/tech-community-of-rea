@@ -23,7 +23,7 @@ const UPDATE_CHARACTER = gql`
   }
 `
 
-const options = ['Associate/Grad', 'Mid', 'Senior', 'Lead', '$']
+const options = ['Associate/Grad', 'Mid', 'Senior', 'Lead', '$$$']
 
 const JobLevel = () => {
   const [updateCharacter] = useMutation(UPDATE_CHARACTER)

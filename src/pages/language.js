@@ -23,7 +23,7 @@ const UPDATE_CHARACTER = gql`
   }
 `
 
-const options = ['Ruby', 'JavaScript', 'Scala', 'Python', 'PHP (other)']
+const options = ['Ruby', 'JavaScript', 'Scala', 'Java', 'Other']
 
 const Language = () => {
   const [updateCharacter] = useMutation(UPDATE_CHARACTER)

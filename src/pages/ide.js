@@ -23,7 +23,7 @@ const UPDATE_CHARACTER = gql`
   }
 `
 
-const options = ['VS Code', 'Vim/Emacs/CLI', 'Jetbrains', 'Notepad++', 'Other']
+const options = ['VS Code', 'CLI', 'Jetbrains', 'Notepad++', 'Other']
 
 const Ide = () => {
   const [updateCharacter] = useMutation(UPDATE_CHARACTER)
