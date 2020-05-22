@@ -16,13 +16,14 @@ const Container = styled.div`
 `
 
 const CardLayout = styled.div`
-  max-width: 100%;
+  width: 100vw;
   display: grid;
   grid-template-columns: repeat(auto-fit, 53mm);
   grid-gap: 0.5rem;
 `
 
 const Button = styled(Link)`
+  z-index: 100;
   position: fixed;
   top: 0.5rem;
   right: 0.5rem;
