@@ -25,10 +25,11 @@ const Index = ({ children }) => {
 
 export default Index
 
-// TODO: Confirm all options
 // TODO: Add drop feedback and loading
-// TODO: Style form errors
-// TODO: Fill in README
+// TODO: Confirm all options
 // TODO: Create landing page grid layout
-// TODO: Delete test records
 // TODO: Build hype
+// TODO: Delete test records
+// TODO: Style form errors?
+// TODO: Fill in README?
+// TODO: Add a loading spinner for image upload

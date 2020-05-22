@@ -23,6 +23,17 @@ const Dropzone = styled.div`
   }
 `
 
+const Img = styled.img`
+  max-height: 400px;
+  margin-bottom: 1rem;
+  object-fit: contain;
+`
+
+const Message = styled.p`
+  color: #777;
+  font-size: 2rem;
+`
+
 const UPLOAD_IMAGE = gql`
   mutation UploadImage($image: Upload!) {
     uploadImage(input: { image: $image }) {
@@ -40,6 +51,7 @@ const UPDATE_CHARACTER = gql`
 `
 
 const ImageUpload = () => {
+  const [isUploading, setIsUploading] = useState(false)
   const [imageUrl, setImageUrl] = useState('')
   const [uploadImage] = useMutation(UPLOAD_IMAGE)
   const [updateCharacter] = useMutation(UPDATE_CHARACTER)
@@ -53,8 +65,10 @@ const ImageUpload = () => {
   }
 
   const onDrop = async (files) => {
+    setIsUploading(true)
     const [image] = files
     const { data } = await uploadImage({ variables: { image } })
+    setIsUploading(false)
     setImageUrl(data.uploadImage.url)
   }
 
@@ -68,10 +82,24 @@ const ImageUpload = () => {
     <Page>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Heading>What do you look like?</Heading>
-        <Dropzone {...getRootProps()}>
-          <input {...getInputProps()} />
-          <FiCamera size="6rem" strokeWidth="1" />
-        </Dropzone>
+        {imageUrl ? (
+          <Img src={imageUrl} />
+        ) : (
+          <Dropzone {...getRootProps()}>
+            {isUploading ? (
+              <Message>Uploading image</Message>
+            ) : (
+              <>
+                <input {...getInputProps()} />
+                {isDragActive ? (
+                  <Message>I dare you!</Message>
+                ) : (
+                  <FiCamera size="6rem" strokeWidth="1" />
+                )}
+              </>
+            )}
+          </Dropzone>
+        )}
         <input
           type="hidden"
           value={imageUrl}
