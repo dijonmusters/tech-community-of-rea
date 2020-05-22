@@ -1,6 +1,5 @@
 import faunadb, { query as q } from 'faunadb'
 import { v2 as cloudinary } from 'cloudinary'
-import fs from 'fs'
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_NAME,

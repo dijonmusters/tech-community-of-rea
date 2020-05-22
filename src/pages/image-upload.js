@@ -3,31 +3,11 @@ import { useForm } from 'react-hook-form'
 import { useMutation } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
 import { navigate } from 'gatsby'
-import styled from 'styled-components'
 import { useDropzone } from 'react-dropzone'
 import { FiCamera } from 'react-icons/fi'
-
-const Container = styled.div`
-  flex: 1;
-  display: flex;
-`
-
-const Form = styled.form`
-  max-width: 800px;
-  margin: 0 auto;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`
-
-const Heading = styled.h2`
-  font-size: 3rem;
-  color: #666;
-  margin-bottom: 1rem;
-  text-transform: uppercase;
-  font-weight: 500;
-`
+import styled from 'styled-components'
+import useUser from '../hooks/useUser'
+import { Page, Form, Heading, Button } from '../components/styled'
 
 const Dropzone = styled.div`
   width: 100%;
@@ -40,21 +20,6 @@ const Dropzone = styled.div`
 
   & > svg {
     color: #777;
-  }
-`
-
-const Button = styled.button`
-  align-self: flex-end;
-  border: 0;
-  font-family: inherit;
-  font-size: 1.5rem;
-  background: #ff5157;
-  color: white;
-  font-weight: 700;
-  padding: 1rem 6rem;
-
-  &:hover {
-    cursor: pointer;
   }
 `
 
@@ -79,9 +44,10 @@ const ImageUpload = () => {
   const [uploadImage] = useMutation(UPLOAD_IMAGE)
   const [updateCharacter] = useMutation(UPDATE_CHARACTER)
   const { register, handleSubmit, errors } = useForm()
-  const id = new URLSearchParams(window.location.search.substring(1)).get('id')
+  const { getId } = useUser()
 
   const onSubmit = async () => {
+    const id = getId()
     await updateCharacter({ variables: { id, imageUrl } })
     navigate(`/character?id=${id}`)
   }
@@ -99,7 +65,7 @@ const ImageUpload = () => {
   })
 
   return (
-    <Container>
+    <Page>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Heading>What do you look like?</Heading>
         <Dropzone {...getRootProps()}>
@@ -115,7 +81,7 @@ const ImageUpload = () => {
         {errors.imageUrl && 'An image is required.'}
         <Button type="submit">Save character</Button>
       </Form>
-    </Container>
+    </Page>
   )
 }
 

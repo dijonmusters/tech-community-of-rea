@@ -4,6 +4,7 @@ import { useMutation } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
 import { navigate } from 'gatsby'
 import styled from 'styled-components'
+import useUser from '../hooks/useUser'
 
 const Container = styled.div`
   flex: 1;
@@ -71,11 +72,13 @@ const getRandomOption = () =>
 const NewCharacter = () => {
   const [createCharacter] = useMutation(CREATE_CHARACTER)
   const { register, handleSubmit, errors } = useForm()
+  const { login } = useUser()
 
   const onSubmit = async ({ username }) => {
     const { data } = await createCharacter({ variables: { username } })
     const { id } = data.createCharacter
-    navigate(`/job-level?id=${id}`)
+    login(id)
+    navigate('/job-level')
   }
 
   return (

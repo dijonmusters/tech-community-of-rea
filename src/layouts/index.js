@@ -25,8 +25,10 @@ const Index = ({ children }) => {
 
 export default Index
 
-// TODO: Reduce heading font size for each page
 // TODO: Confirm all options
 // TODO: Add drop feedback and loading
+// TODO: Style form errors
 // TODO: Fill in README
 // TODO: Create landing page grid layout
+// TODO: Delete test records
+// TODO: Build hype
